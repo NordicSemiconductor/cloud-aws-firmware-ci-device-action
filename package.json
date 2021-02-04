@@ -1,5 +1,5 @@
 {
-  "name": "@nordicsemiconductor/cloud-aws-firmware-ci-feature-runner-action-aws",
+  "name": "@nordicsemiconductor/cloud-aws-firmware-ci-feature-runner-action",
   "version": "0.0.0-development",
   "description": "Uses @nordicsemiconductor/e2e-bdd-test-runner to run features files of a firmware.",
   "scripts": {
@@ -7,12 +7,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NordicSemiconductor/cloud-aws-firmware-ci-feature-runner-action-aws.git"
+    "url": "https://github.com/NordicSemiconductor/cloud-aws-firmware-ci-feature-runner-action.git"
   },
   "bugs": {
-    "url": "https://github.com/NordicSemiconductor/cloud-aws-firmware-ci-feature-runner-action-aws/issues"
+    "url": "https://github.com/NordicSemiconductor/cloud-aws-firmware-ci-feature-runner-action/issues"
   },
-  "homepage": "https://github.com/NordicSemiconductor/cloud-aws-firmware-ci-feature-runner-action-aws#readme",
+  "homepage": "https://github.com/NordicSemiconductor/cloud-aws-firmware-ci-feature-runner-action#readme",
   "keywords": [
     "Cloud",
     "IoT",
