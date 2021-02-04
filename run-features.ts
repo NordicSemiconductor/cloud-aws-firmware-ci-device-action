@@ -3,7 +3,7 @@ import {
 	ConsoleReporter,
 	awsSdkStepRunners,
 	storageStepRunners,
-} from '@bifravst/e2e-bdd-test-runner'
+} from '@nordicsemiconductor/e2e-bdd-test-runner'
 import * as chalk from 'chalk'
 import { IoTClient } from '@aws-sdk/client-iot'
 import { STSClient, GetCallerIdentityCommand } from '@aws-sdk/client-sts'

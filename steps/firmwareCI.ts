@@ -2,8 +2,11 @@ import {
 	regexGroupMatcher,
 	StepRunnerFunc,
 	InterpolatedStep,
-} from '@bifravst/e2e-bdd-test-runner'
-import { wait, FirmwareCIJobDocument } from '@bifravst/firmware-ci-runner-aws'
+} from '@nordicsemiconductor/e2e-bdd-test-runner'
+import {
+	wait,
+	FirmwareCIJobDocument,
+} from '@nordicsemiconductor/firmware-ci-runner-aws'
 import { IoTClient, Job } from '@aws-sdk/client-iot'
 import fetch from 'node-fetch'
 
