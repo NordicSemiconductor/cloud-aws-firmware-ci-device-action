@@ -10,5 +10,5 @@
 [![ESLint: TypeScript](https://img.shields.io/badge/ESLint-TypeScript-blue.svg)](https://github.com/typescript-eslint/typescript-eslint)
 
 Uses
-[`@nordicsemiconductor/e2e-bdd-test-runner`](https://github.com/NordicSemiconductor/e2e-bdd-test-runner)
+[`@nordicsemiconductor/e2e-bdd-test-runner`](https://github.com/NordicSemiconductor/cloud-e2e-bdd-test-runner-js)
 to run features files of a firmware.
