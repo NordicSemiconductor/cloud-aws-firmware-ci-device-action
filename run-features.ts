@@ -75,6 +75,9 @@ const main = async () => {
 			.addStepRunners(
 				awsSdkStepRunners({
 					constructorArgs: {
+						__all: {
+							region,
+						},
 						IotData: {
 							endpoint: world.mqttEndpoint,
 						},
