@@ -27,7 +27,7 @@
   "dependencies": {
     "@actions/core": "1.2.6",
     "@aws-sdk/client-iot": "3.5.0",
-    "@aws-sdk/client-sts": "3.4.1",
+    "@aws-sdk/client-sts": "3.5.0",
     "@nordicsemiconductor/cloudformation-helpers": "6.0.4",
     "@nordicsemiconductor/e2e-bdd-test-runner": "12.0.6",
     "@nordicsemiconductor/firmware-ci-runner-aws": "5.1.0",
