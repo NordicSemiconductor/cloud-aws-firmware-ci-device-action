@@ -30,7 +30,7 @@
     "@aws-sdk/client-sts": "3.6.0",
     "@nordicsemiconductor/cloudformation-helpers": "6.0.6",
     "@nordicsemiconductor/e2e-bdd-test-runner": "12.0.13",
-    "@nordicsemiconductor/firmware-ci-runner-aws": "5.1.8",
+    "@nordicsemiconductor/firmware-ci-runner-aws": "5.1.10",
     "chalk": "4.1.0",
     "node-fetch": "2.6.1"
   },
