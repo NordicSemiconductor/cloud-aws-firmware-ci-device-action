@@ -29,7 +29,7 @@
     "@aws-sdk/client-iot": "3.10.0",
     "@aws-sdk/client-sts": "3.10.0",
     "@nordicsemiconductor/cloudformation-helpers": "6.0.13",
-    "@nordicsemiconductor/e2e-bdd-test-runner": "13.0.13",
+    "@nordicsemiconductor/e2e-bdd-test-runner": "13.0.14",
     "@nordicsemiconductor/firmware-ci-runner-aws": "5.1.19",
     "chalk": "4.1.0",
     "node-fetch": "2.6.1"
