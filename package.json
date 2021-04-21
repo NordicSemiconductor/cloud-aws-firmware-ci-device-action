@@ -31,7 +31,7 @@
     "@nordicsemiconductor/cloudformation-helpers": "6.0.18",
     "@nordicsemiconductor/e2e-bdd-test-runner": "13.0.32",
     "@nordicsemiconductor/firmware-ci-runner-aws": "5.1.22",
-    "chalk": "4.1.0",
+    "chalk": "4.1.1",
     "node-fetch": "2.6.1"
   },
   "devDependencies": {
