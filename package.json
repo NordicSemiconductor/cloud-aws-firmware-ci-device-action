@@ -26,7 +26,7 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "@actions/core": "1.2.7",
-    "@aws-sdk/client-iot": "3.13.0",
+    "@aws-sdk/client-iot": "3.13.1",
     "@aws-sdk/client-sts": "3.13.1",
     "@nordicsemiconductor/cloudformation-helpers": "6.0.18",
     "@nordicsemiconductor/e2e-bdd-test-runner": "13.1.4",
