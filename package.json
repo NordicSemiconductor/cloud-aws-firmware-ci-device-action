@@ -1,9 +1,9 @@
 {
-  "name": "@nordicsemiconductor/cloud-aws-firmware-ci-feature-runner-action",
+  "name": "@nordicsemiconductor/cloud-aws-firmware-ci-device-action",
   "version": "0.0.0-development",
-  "description": "Uses @nordicsemiconductor/e2e-bdd-test-runner to run features files of a firmware.",
+  "description": "GitHub action that runs firmware on a real device connected to AWS IoT via a self-hosted GitHub Actions runner",
   "scripts": {
-    "build": "npx ncc build run-features.ts -o build",
+    "build": "npx ncc build run.ts -o build",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
@@ -26,13 +26,9 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "@actions/core": "1.4.0",
-    "@aws-sdk/client-iot": "3.18.0",
-    "@aws-sdk/client-sts": "3.18.0",
-    "@nordicsemiconductor/cloudformation-helpers": "6.0.26",
-    "@nordicsemiconductor/e2e-bdd-test-runner": "13.1.47",
-    "@nordicsemiconductor/firmware-ci-runner-aws": "5.4.19",
     "chalk": "4.1.1",
-    "node-fetch": "2.6.1"
+    "node-fetch": "2.6.1",
+    "uuid": "8.3.2"
   },
   "devDependencies": {
     "@commitlint/cli": "12.1.4",
@@ -40,6 +36,7 @@
     "@nordicsemiconductor/asset-tracker-cloud-code-style": "9.0.4",
     "@nordicsemiconductor/eslint-config-asset-tracker-cloud-typescript": "7.0.23",
     "@types/node-fetch": "2.5.10",
+    "@types/uuid": "8.3.0",
     "@vercel/ncc": "0.28.6",
     "eslint": "7.28.0",
     "husky": "6.0.0",
@@ -64,7 +61,11 @@
   },
   "release": {
     "branches": [
-      "saga"
+      "saga",
+      {
+        "name": "!(saga)",
+        "prerelease": true
+      }
     ],
     "remoteTags": true,
     "plugins": [
