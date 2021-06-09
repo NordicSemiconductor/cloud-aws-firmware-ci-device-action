@@ -74,7 +74,7 @@ fs.writeFileSync(jobLocation, JSON.stringify(job, null, 2), 'utf-8')
 const p = spawn('npm', [
 	'exec',
 	'--',
-	'@nordicsemiconductor/firmware-ci-runner-aws',
+	'@nordicsemiconductor/firmware-ci-runner-aws@simplified-runner',
 ])
 let timedOut = false
 const t = setTimeout(() => {

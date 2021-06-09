@@ -612,7 +612,7 @@ external_fs_.writeFileSync(jobLocation, JSON.stringify(job, null, 2), 'utf-8');
 const p = (0,external_child_process_namespaceObject.spawn)('npm', [
     'exec',
     '--',
-    '@nordicsemiconductor/firmware-ci-runner-aws',
+    '@nordicsemiconductor/firmware-ci-runner-aws@simplified-runner',
 ]);
 let timedOut = false;
 const t = setTimeout(() => {
