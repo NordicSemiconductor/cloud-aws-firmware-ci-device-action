@@ -70,6 +70,7 @@ const job = {
 
 console.log(JSON.stringify(job, null, 2))
 fs.writeFileSync(jobLocation, JSON.stringify(job, null, 2), 'utf-8')
+console.log(`Job document written to`, jobLocation)
 
 const p = spawn('npm', [
 	'exec',

@@ -609,6 +609,7 @@ const job = {
 };
 console.log(JSON.stringify(job, null, 2));
 external_fs_.writeFileSync(jobLocation, JSON.stringify(job, null, 2), 'utf-8');
+console.log(`Job document written to`, jobLocation);
 const p = (0,external_child_process_namespaceObject.spawn)('npm', [
     'exec',
     '--',
