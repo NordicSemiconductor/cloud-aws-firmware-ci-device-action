@@ -49,6 +49,9 @@ const powerCycle = {
 	),
 }
 
+let tries = parseInt(getRequiredInput('tries'), 10)
+console.log(`Retries: ${tries}`)
+
 const job = {
 	deviceId,
 	appVersion,
@@ -72,34 +75,44 @@ console.log(JSON.stringify(job, null, 2))
 fs.writeFileSync(jobLocation, JSON.stringify(job, null, 2), 'utf-8')
 console.log(`Job document written to`, jobLocation)
 
-const p = spawn('npm', [
-	'exec',
-	'--',
-	'@nordicsemiconductor/firmware-ci-runner-aws@simplified-runner',
-])
-let timedOut = false
-const t = setTimeout(() => {
-	p.kill('SIGHUP')
-	timedOut = true
-}, timeoutInMinutes * 60 * 1000)
-const data: string[] = []
-p.stdout.on('data', (d) => {
-	console.log(d.toString())
-	data.push(d.toString())
-})
-const error: string[] = []
-p.stderr.on('data', (d) => {
-	console.error(d.toString())
-	error.push(d.toString())
-})
-p.on('close', (code) => {
-	clearTimeout(t)
-	setOutput('connected', code === 0)
-	if (timedOut) {
-		console.error('Timed out.')
-		process.exit(-108)
-	}
-	process.exit(code === null ? -109 : code)
-})
-p.stdin.write(JSON.stringify(job))
-p.stdin.end()
+const run = async () => {
+	tries--
+	const p = spawn('npm', [
+		'exec',
+		'--',
+		'@nordicsemiconductor/firmware-ci-runner-aws@simplified-runner',
+	])
+	let timedOut = false
+	const t = setTimeout(() => {
+		p.kill('SIGHUP')
+		timedOut = true
+	}, timeoutInMinutes * 60 * 1000)
+	const data: string[] = []
+	p.stdout.on('data', (d) => {
+		console.log(d.toString())
+		data.push(d.toString())
+	})
+	const error: string[] = []
+	p.stderr.on('data', (d) => {
+		console.error(d.toString())
+		error.push(d.toString())
+	})
+	p.on('close', (code) => {
+		clearTimeout(t)
+		setOutput('connected', code === 0)
+		if (timedOut) {
+			console.error('Timed out.')
+			process.exit(-108)
+		}
+		if (code === 0) process.exit() // Success
+		if (tries > 0) {
+			console.debug(`Retrying ...`)
+			void run()
+		}
+		process.exit(code === null ? -109 : code)
+	})
+	p.stdin.write(JSON.stringify(job))
+	p.stdin.end()
+}
+
+void run()

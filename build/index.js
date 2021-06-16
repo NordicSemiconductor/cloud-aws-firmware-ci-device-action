@@ -589,6 +589,8 @@ const powerCycle = {
     waitSecondsAfterOff: parseInt(getRequiredInput('powerCycle waitSecondsAfterOff'), 10),
     waitSecondsAfterOn: parseInt(getRequiredInput('powerCycle waitSecondsAfterOn'), 10),
 };
+let tries = parseInt(getRequiredInput('tries'), 10);
+console.log(`Retries: ${tries}`);
 const job = {
     deviceId,
     appVersion,
@@ -610,37 +612,47 @@ const job = {
 console.log(JSON.stringify(job, null, 2));
 external_fs_.writeFileSync(jobLocation, JSON.stringify(job, null, 2), 'utf-8');
 console.log(`Job document written to`, jobLocation);
-const p = (0,external_child_process_namespaceObject.spawn)('npm', [
-    'exec',
-    '--',
-    '@nordicsemiconductor/firmware-ci-runner-aws@simplified-runner',
-]);
-let timedOut = false;
-const t = setTimeout(() => {
-    p.kill('SIGHUP');
-    timedOut = true;
-}, timeoutInMinutes * 60 * 1000);
-const data = [];
-p.stdout.on('data', (d) => {
-    console.log(d.toString());
-    data.push(d.toString());
-});
-const error = [];
-p.stderr.on('data', (d) => {
-    console.error(d.toString());
-    error.push(d.toString());
-});
-p.on('close', (code) => {
-    clearTimeout(t);
-    (0,core.setOutput)('connected', code === 0);
-    if (timedOut) {
-        console.error('Timed out.');
-        process.exit(-108);
-    }
-    process.exit(code === null ? -109 : code);
-});
-p.stdin.write(JSON.stringify(job));
-p.stdin.end();
+const run = async () => {
+    tries--;
+    const p = (0,external_child_process_namespaceObject.spawn)('npm', [
+        'exec',
+        '--',
+        '@nordicsemiconductor/firmware-ci-runner-aws@simplified-runner',
+    ]);
+    let timedOut = false;
+    const t = setTimeout(() => {
+        p.kill('SIGHUP');
+        timedOut = true;
+    }, timeoutInMinutes * 60 * 1000);
+    const data = [];
+    p.stdout.on('data', (d) => {
+        console.log(d.toString());
+        data.push(d.toString());
+    });
+    const error = [];
+    p.stderr.on('data', (d) => {
+        console.error(d.toString());
+        error.push(d.toString());
+    });
+    p.on('close', (code) => {
+        clearTimeout(t);
+        (0,core.setOutput)('connected', code === 0);
+        if (timedOut) {
+            console.error('Timed out.');
+            process.exit(-108);
+        }
+        if (code === 0)
+            process.exit();
+        if (tries > 0) {
+            console.debug(`Retrying ...`);
+            void run();
+        }
+        process.exit(code === null ? -109 : code);
+    });
+    p.stdin.write(JSON.stringify(job));
+    p.stdin.end();
+};
+void run();
 
 })();
 
