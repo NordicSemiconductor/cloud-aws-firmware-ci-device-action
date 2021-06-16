@@ -106,6 +106,10 @@ inputs:
 outputs:
   connected:
     description: "Whether the device connected."
+  timeout:
+    description: "Whether the job timed out."
+  try:
+    description: "Number of the try when stopping the job."
 
 runs:
   using: "node12"

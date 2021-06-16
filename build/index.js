@@ -591,6 +591,7 @@ const powerCycle = {
 };
 let tries = parseInt(getRequiredInput('tries'), 10);
 console.log(`Retries: ${tries}`);
+let numTry = 0;
 const job = {
     deviceId,
     appVersion,
@@ -614,6 +615,7 @@ external_fs_.writeFileSync(jobLocation, JSON.stringify(job, null, 2), 'utf-8');
 console.log(`Job document written to`, jobLocation);
 const run = async () => {
     tries--;
+    numTry++;
     const p = (0,external_child_process_namespaceObject.spawn)('npm', [
         'exec',
         '--',
@@ -639,6 +641,8 @@ const run = async () => {
         (0,core.setOutput)('connected', code === 0);
         if (timedOut) {
             console.error('Timed out.');
+            (0,core.setOutput)('timeout', true);
+            (0,core.setOutput)('try', numTry);
             process.exit(-108);
         }
         if (code === 0)
@@ -648,6 +652,7 @@ const run = async () => {
             void run();
             return;
         }
+        (0,core.setOutput)('try', numTry);
         process.exit(code === null ? -109 : code);
     });
     p.stdin.write(JSON.stringify(job));

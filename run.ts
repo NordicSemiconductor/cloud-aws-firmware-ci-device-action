@@ -51,6 +51,7 @@ const powerCycle = {
 
 let tries = parseInt(getRequiredInput('tries'), 10)
 console.log(`Retries: ${tries}`)
+let numTry = 0
 
 const job = {
 	deviceId,
@@ -77,6 +78,7 @@ console.log(`Job document written to`, jobLocation)
 
 const run = async () => {
 	tries--
+	numTry++
 	const p = spawn('npm', [
 		'exec',
 		'--',
@@ -102,6 +104,8 @@ const run = async () => {
 		setOutput('connected', code === 0)
 		if (timedOut) {
 			console.error('Timed out.')
+			setOutput('timeout', true)
+			setOutput('try', numTry)
 			process.exit(-108)
 		}
 		if (code === 0) process.exit() // Success
@@ -110,6 +114,7 @@ const run = async () => {
 			void run()
 			return
 		}
+		setOutput('try', numTry)
 		process.exit(code === null ? -109 : code)
 	})
 	p.stdin.write(JSON.stringify(job))
