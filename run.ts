@@ -108,6 +108,7 @@ const run = async () => {
 		if (tries > 0) {
 			console.debug(`Retrying ...`)
 			void run()
+			return
 		}
 		process.exit(code === null ? -109 : code)
 	})
