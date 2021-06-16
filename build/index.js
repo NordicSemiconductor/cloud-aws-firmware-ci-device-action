@@ -619,7 +619,7 @@ const run = async () => {
     const p = (0,external_child_process_namespaceObject.spawn)('npm', [
         'exec',
         '--',
-        '@nordicsemiconductor/firmware-ci-runner-aws@simplified-runner',
+        '@nordicsemiconductor/firmware-ci-runner-aws',
     ]);
     let timedOut = false;
     const t = setTimeout(() => {
