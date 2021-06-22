@@ -582,13 +582,14 @@ const testEnv = {
     brokerHostname: getRequiredInput('broker hostname'),
     stackName: getRequiredInput('stack name'),
 };
-const powerCycle = {
-    enabled: getRequiredInput('powerCycle enabled') === 'true',
-    offCmd: getRequiredInput('powerCycle offCmd'),
-    onCmd: getRequiredInput('powerCycle onCmd'),
-    waitSecondsAfterOff: parseInt(getRequiredInput('powerCycle waitSecondsAfterOff'), 10),
-    waitSecondsAfterOn: parseInt(getRequiredInput('powerCycle waitSecondsAfterOn'), 10),
-};
+const powerCycle = getRequiredInput('powerCycle enabled') === 'true'
+    ? {
+        offCmd: getRequiredInput('powerCycle offCmd'),
+        onCmd: getRequiredInput('powerCycle onCmd'),
+        waitSecondsAfterOff: parseInt(getRequiredInput('powerCycle waitSecondsAfterOff'), 10),
+        waitSecondsAfterOn: parseInt(getRequiredInput('powerCycle waitSecondsAfterOn'), 10),
+    }
+    : undefined;
 let tries = parseInt(getRequiredInput('tries'), 10);
 console.log(`Retries: ${tries}`);
 let numTry = 0;
