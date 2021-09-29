@@ -112,5 +112,5 @@ outputs:
     description: "Number of the try when stopping the job."
 
 runs:
-  using: "node14"
+  using: "node12"
   main: "wrap-with-require.js"
