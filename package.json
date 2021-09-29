@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NordicSemiconductor/cloud-aws-firmware-ci-feature-runner-action.git"
+    "url": "https://github.com/NordicSemiconductor/cloud-aws-firmware-ci-device-action.git"
   },
   "bugs": {
-    "url": "https://github.com/NordicSemiconductor/cloud-aws-firmware-ci-feature-runner-action/issues"
+    "url": "https://github.com/NordicSemiconductor/cloud-aws-firmware-ci-device-action/issues"
   },
-  "homepage": "https://github.com/NordicSemiconductor/cloud-aws-firmware-ci-feature-runner-action#readme",
+  "homepage": "https://github.com/NordicSemiconductor/cloud-aws-firmware-ci-device-action#readme",
   "keywords": [
     "Cloud",
     "IoT",
