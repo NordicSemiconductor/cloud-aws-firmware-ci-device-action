@@ -6,3 +6,5 @@ node_modules/
 dist/
 build/*
 !build/index.js
+!build/package.json
+!build/wrap-with-require.mjs
