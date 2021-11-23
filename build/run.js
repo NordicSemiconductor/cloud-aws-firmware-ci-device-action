@@ -1303,7 +1303,6 @@ var getRequiredInput = (input) => (0, import_core.getInput)(input, { required: t
 var deviceId = getRequiredInput("device id");
 var appVersion = getRequiredInput("app version");
 var target = getRequiredInput("target");
-var network = getRequiredInput("network");
 var secTag = parseInt(getRequiredInput("sec tag"), 10);
 var timeoutInMinutes = parseInt(getRequiredInput("timeout in minutes"), 10);
 var hexFile = getRequiredInput("hex file");
@@ -1345,7 +1344,6 @@ var job = {
   secTag,
   certDir,
   target,
-  network,
   powerCycle,
   flashLogLocation,
   deviceLogLocation
