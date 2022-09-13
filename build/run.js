@@ -2229,13 +2229,14 @@ var job = {
 console.log(JSON.stringify(job, null, 2));
 fs.writeFileSync(jobLocation, JSON.stringify(job, null, 2), "utf-8");
 console.log(`Job document written to`, jobLocation);
+var ciRunnerPackage = (0, import_core.getInput)("ci runner package").trim();
 var run = async () => {
   tries--;
   numTry++;
   const p = (0, import_child_process.spawn)("npm", [
     "exec",
     "--",
-    "@nordicsemiconductor/firmware-ci-runner-aws"
+    ciRunnerPackage.length > 0 ? ciRunnerPackage : "@nordicsemiconductor/firmware-ci-runner-aws"
   ]);
   let timedOut = false;
   const t = setTimeout(() => {

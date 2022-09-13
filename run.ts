@@ -83,13 +83,17 @@ console.log(JSON.stringify(job, null, 2))
 fs.writeFileSync(jobLocation, JSON.stringify(job, null, 2), 'utf-8')
 console.log(`Job document written to`, jobLocation)
 
+const ciRunnerPackage = getInput('ci runner package').trim()
+
 const run = async () => {
 	tries--
 	numTry++
 	const p = spawn('npm', [
 		'exec',
 		'--',
-		'@nordicsemiconductor/firmware-ci-runner-aws',
+		ciRunnerPackage.length > 0
+			? ciRunnerPackage
+			: '@nordicsemiconductor/firmware-ci-runner-aws',
 	])
 	let timedOut = false
 	const t = setTimeout(() => {
