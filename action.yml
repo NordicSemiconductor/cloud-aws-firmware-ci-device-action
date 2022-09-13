@@ -101,7 +101,7 @@ inputs:
     required: false
   ci runner package:
     description: "The CI runner package to use"
-    default: "@nordicsemiconductor/firmware-ci-runner-azure"
+    default: "@nordicsemiconductor/firmware-ci-runner-aws"
     required: false
 
 outputs:
