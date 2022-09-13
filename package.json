@@ -5,9 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "esbuild run.ts --platform=node --bundle --outfile=build/run.js",
-    "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
