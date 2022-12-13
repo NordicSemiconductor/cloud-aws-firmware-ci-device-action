@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@nordicsemiconductor/asset-tracker-cloud-code-style": "11.0.156",
-    "@types/node": "18.11.13",
+    "@types/node": "18.11.14",
     "@types/node-fetch": "3.0.3",
     "@types/uuid": "9.0.0",
     "esbuild": "0.14.54",
