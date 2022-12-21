@@ -100,15 +100,11 @@ const run = async () => {
 		p.kill('SIGHUP')
 		timedOut = true
 	}, timeoutInMinutes * 60 * 1000)
-	const data: string[] = []
 	p.stdout.on('data', (d) => {
 		console.log(d.toString())
-		data.push(d.toString())
 	})
-	const error: string[] = []
 	p.stderr.on('data', (d) => {
 		console.error(d.toString())
-		error.push(d.toString())
 	})
 	p.on('close', (code) => {
 		clearTimeout(t)
