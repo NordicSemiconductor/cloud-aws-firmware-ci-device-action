@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@nordicsemiconductor/asset-tracker-cloud-code-style": "12.0.25",
-    "@types/node": "18.16.0",
+    "@types/node": "18.16.1",
     "@types/node-fetch": "3.0.3",
     "esbuild": "0.14.54",
     "semantic-release": "21.0.1"
