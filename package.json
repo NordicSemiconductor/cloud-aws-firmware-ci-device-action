@@ -31,7 +31,7 @@
     "@types/node": "18.17.9",
     "@types/node-fetch": "3.0.3",
     "esbuild": "0.19.2",
-    "semantic-release": "21.0.9"
+    "semantic-release": "21.1.0"
   },
   "lint-staged": {
     "*.{md,json,yaml,yml}": [
